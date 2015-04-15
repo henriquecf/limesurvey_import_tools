@@ -1,8 +1,10 @@
 require 'rake'
 
+desc "import users of type: First Last <first@email.com>"
 task :import_from_email_type do
+  filename = ENV.fetch("filename")
   puts "firstname,lastname,email"
-  File.open("./medicina2ano.txt", "r") do |file|
+  File.open(filename, "r") do |file|
     file.each do |line|
       cleaned_line = line.chomp
       if cleaned_line[-1] == ","
